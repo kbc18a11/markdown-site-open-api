@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clientGenerate": "npx @openapitools/openapi-generator-cli generate -g typescript-axios -i opneapi.yaml -o ./apiclient",
-    "serverGenerate": "npx @openapitools/openapi-generator-cli generate -g go-echo-server -i opneapi.yaml -o ./serverCode",
+    "goEchoServerGenerate": "npx @openapitools/openapi-generator-cli generate -g go-echo-server -i opneapi.yaml -o ./serverCode",
+    "severCodeConfig": "node severCodeConfig",
+    "serverGenerate": "npm run goEchoServerGenerate && npm run severCodeConfig",
     "apiMock": "npx prism mock ./opneapi.yaml -p 4000 -d"
   },
   "keywords": [],
