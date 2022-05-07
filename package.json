@@ -1,0 +1,19 @@
+{
+  "name": "markdown-site-open-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clientGenerate": "npx @openapitools/openapi-generator-cli generate -g typescript-axios -i opneapi.yaml -o ./apiclient",
+    "serverGenerate": "npx @openapitools/openapi-generator-cli generate -g go-echo-server -i opneapi.yaml -o ./serverCode",
+    "apiMock": "npx prism mock ./opneapi.yaml -p 4000 -d"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@stoplight/prism-cli": "^4.9.2",
+    "prism": "^4.1.2"
+  }
+}

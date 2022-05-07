@@ -1,0 +1,26 @@
+type: object
+description: 初期登録時のユーザー情報
+required:
+  - name
+  - email
+  - password
+properties:
+  name:
+    description: ユーザーネーム
+    type: string
+    minLength: 1
+    maxLength: 32
+  email:
+    description: メールアドレス
+    type: string
+    minLength: 1
+    maxLength: 255
+    format: email
+  password:
+    description: パスワード
+    type: string
+    minLength: 8
+    pattern: "^[a-zA-Z0-9.?/-]{8,}$"
+  csrf:
+    description: csrfトークン
+    type: string

@@ -1,0 +1,22 @@
+type: object
+description: ユーザー情報
+required:
+  - id
+  - name
+  - email
+properties:
+  id:
+    description: ID
+    type: string
+    format: uuid
+  name:
+    description: ユーザーネーム
+    type: string
+    minLength: 1
+    maxLength: 32
+  email:
+    description: メールアドレス
+    type: string
+    minLength: 1
+    maxLength: 255
+    format: email
