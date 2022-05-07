@@ -6,6 +6,7 @@ const deleteDirsPathList = [
   '.docs',
   '.openapi-generator',
   'handlers',
+  'schemas'
 ];
 
 const deleteFilesNameList = [
@@ -18,28 +19,21 @@ const deleteFilesNameList = [
 
 // ディレクトリの削除
 for (const path of deleteDirsPathList) {
-  try {
-    fs.rmdirSync(serverCodeDirPath + path, { recursive: true });
-  } catch (error) {
-    console.error(error);
+  if (!fs.existsSync(serverCodeDirPath + 'schemas')) {
+    // ディレクトリschemasが存在しない場合
+    break;
   }
+
+  fs.rmdirSync(serverCodeDirPath + path, { recursive: true });
 }
 
 // ファイル削除
 for (const path of deleteFilesNameList) {
-  try {
-    fs.unlinkSync(serverCodeDirPath + path);
-  } catch (error) {
-    console.error(error);
-  }
+  fs.unlinkSync(serverCodeDirPath + path);
 }
 
 // リクエスト,レスポンススキーマファイルがあるディレクトリ名の修正
-try {
-  fs.renameSync(serverCodeDirPath + 'models', serverCodeDirPath + 'schemas');
-} catch (error) {
-  console.log(error);
-}
+fs.renameSync(serverCodeDirPath + 'models', serverCodeDirPath + 'schemas');
 
 // ファイルのpackage名の修正
 for (const file of fs.readdirSync(serverCodeDirPath + 'schemas')) {
