@@ -18,6 +18,12 @@ paths:
       summary: ログイン
       description: ログイン
       operationId: login
+      parameters:
+        - in: header
+          name: X-XSRF-TOKEN
+          schema:
+            type: string
+          required: true
       requestBody:
         required: true
         content:
@@ -46,6 +52,12 @@ paths:
       summary: ユーザー情報登録
       description: ユーザー情報を新規登録
       operationId: createMe
+      parameters:
+        - in: header
+          name: X-XSRF-TOKEN
+          schema:
+            type: string
+          required: true
       requestBody:
         required: true
         content:

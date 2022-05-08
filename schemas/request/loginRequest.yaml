@@ -15,6 +15,3 @@ properties:
     type: string
     minLength: 8
     pattern: "^[a-zA-Z0-9.?/-]{8,}$"
-  csrf:
-    description: csrfトークン
-    type: string
